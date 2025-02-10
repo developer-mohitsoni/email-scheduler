@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,6 +16,7 @@ export default function Home() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -85,6 +87,13 @@ export default function Home() {
             >
               {loading && <Loader2 className="animate-spin" size={20} />}
               {loading ? "Scheduling..." : "Schedule"}
+            </Button>
+            <Button
+              type="button"
+              className="w-full mt-2 bg-blue-600 text-white"
+              onClick={() => router.push("/emails")}
+            >
+              View Scheduled Emails
             </Button>
           </form>
         </CardContent>
