@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Home() {
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
@@ -22,7 +24,7 @@ export default function Home() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/schedule-email", {
+      await axios.post(`${API_URL}/schedule-email`, {
         to,
         subject,
         content,

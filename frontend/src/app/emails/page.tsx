@@ -12,6 +12,8 @@ interface Email {
   createdAt: Date;
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Emails() {
   const [emails, setEmails] = useState<Email[]>([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,7 @@ export default function Emails() {
   useEffect(() => {
     const fetchEmails = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/emails");
+        const res = await axios.get(`${API_URL}/emails`);
         setEmails(res.data as Email[]);
       } catch {
         console.error("Failed to fetch emails");
