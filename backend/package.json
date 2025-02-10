@@ -4,11 +4,11 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/server.js",
-    "server": "nodemon ./dist/server.js",
+    "build": "tsc",
+    "start": "NODE_ENV=production node ./dist/server.js",
+    "server": "nodemon --watch ./dist ./dist/server.js",
     "watch": "tsc -w",
-    "dev": "concurrently \"npm run watch\" \"npm run server\" \"npm run watch-views\" \"node ./dist/jobs/emailProcessor.js\""
+    "dev": "concurrently \"npm run watch\" \"npm run server\" \"node ./dist/jobs/emailProcessor.js\""
   },
   "keywords": [],
   "author": "",
